@@ -1,0 +1,99 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="row justify-content-center">
+  <div class="col-8 col-md-10 col-lg-8 col-xl-8 col-xxl-6">
+    <!-- ALBUM -->
+    <div class="card border-0 mt-5 mb-3 shadow-sm bg-light">
+      <div class="row row-cols-1 row-cols-md-2 d-flex flex-row">
+        <div class="col">
+          <% if(album) { %>
+          <img src="<%= album.cover %>" class="rounded-start w-100 img-fluid" alt="Album Cover" crossorigin="anonymous" />
+        </div>
+        <div class="col d-flex flex-column justify-content-between align-items-start p-3">
+          <a href="<%= album.url %>" class="align-self-center py-2">
+            <img src="/img/Spotify_Logo_CMYK_Black.png" class="spotify-logo" alt="Spotify Logo" />
+          </a>
+          <div class="fs-md">
+            <p class="card-title"><%= album.name%></p>
+            <p class="card-subtitle"><%= album.artist %></p>
+            <p class="card-text"><%= album.tracks %><%= album.tracks > 1 ? ' Tracks' : ' Track' %></p>
+            <p class="card-text">Released on <%= album.date %></p>
+          </div>
+          <% } %>
+          <div class="input-group d-flex justify-content-end align-items-center">
+            <a class="btn btn-link text-reset text-decoration-none" href="/albums"><i class="bi bi-caret-left-fill" style="font-size: 1.2rem"></i>Back to Index</a>
+            <% if(currentUser && currentUser.username ==='admin') { %>
+            <form action="/albums/<%= album._id %>?_method=DELETE" method="POST">
+              <button type="submit" class="btn btn-link"><i class="bi bi-trash3-fill" style="font-size: 1.2rem; color: black" ;></i></button>
+            </form>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PLAYER -->
+    <div class="card border-0 mb-3 shadow-sm rounded-4">
+      <iframe
+        style="border-radius: 12px"
+        src="https://open.spotify.com/embed/album/<%= album.spotify_id %>?utm_source=generator"
+        width="100%"
+        height="152"
+        frameBorder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"
+        crossorigin="anonymous"
+      ></iframe>
+    </div>
+    <!-- REVIEW FORM -->
+    <div class="card border-0 mb-3 shadow-sm rounded-4 bg-light p-4">
+      <h3>Leave a Review</h3>
+      <% if(currentUser) { %>
+      <form action="/albums/<%= album._id %>/reviews" method="POST" class="needs-validation" novalidate>
+        <label for="rating" class="form-label fs-md">Rating</label>
+        <input type="range" name="review[rating]" class="form-range" min="0" max="5" id="rating" />
+        <label for="body" class="form-label fs-md">Review</label>
+        <textarea name="review[body]" id="body" class="form-control fs-md" cols="100" rows="5" required></textarea>
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-sm btn-dark">Submit</button>
+        </div>
+      </form>
+      <% } else { %>
+      <form action="/albums/<%= album._id %>/reviews" method="POST" class="needs-validation" novalidate>
+        <label for="rating" class="form-label fs-md">Rating</label>
+        <input type="range" name="review[rating]" class="form-range" min="0" max="5" id="rating" disabled />
+        <label for="body" class="form-label fs-md">Review</label>
+        <textarea name="review[body]" id="body" class="form-control fs-md" cols="100" rows="5" required disabled></textarea>
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-sm btn-dark" disabled>Submit</button>
+        </div>
+      </form>
+      <% } %>
+      <!-- REVIEWS -->
+      <% if (album.reviews.length) { %> <% for(let review of album.reviews) {%>
+      <ul class="list-group list-group-flush mt-4 fs-md">
+        <li class="list-group-item">
+          <div class="mt-2 mb-1">
+            <% for(let i = 0; i < review.rating; i++) { %>
+            <i class="bi bi-vinyl-fill" style="font-size: 1.2rem; color: #917898"></i>
+            <% } %> <span class="fs-5"><%= review.rating %></span>
+          </div>
+          <p><%= review.body %></p>
+          <div class="d-flex justify-content-between">
+            <div class="mb-2">
+              <span><%= review.author.username %></span>
+              <div class="vr mx-2"></div>
+              <span><%= review.date.toDateString() %></span>
+            </div>
+            <% if((currentUser && currentUser.username === 'admin') || (currentUser && review.author.equals(currentUser._id))) { %>
+            <form action="/albums/<%= album._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST" class="text-end">
+              <button type="submit" class="btn btn-link pt-0"><i class="bi bi-trash3-fill" style="font-size: 1rem; color: black" ;></i></button>
+            </form>
+            <% } %>
+          </div>
+        </li>
+      </ul>
+      <% } %> <% } %>
+    </div>
+  </div>
+</div>

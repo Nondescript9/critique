@@ -1,0 +1,15 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="container my-5">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="alert alert-dark" role="alert">
+        <span class="fw-medium fs-5"><%= err.statusCode %> <%= err.message %><a href="/albums" class="link-dark float-end">Go back to Index</a></span>
+        <% if (process.env.NODE_ENV !== 'production') { %>
+        <hr />
+        <p><%= err.stack %></p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

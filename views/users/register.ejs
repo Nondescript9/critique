@@ -1,0 +1,33 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="row justify-content-center">
+  <div class="col-8 col-md-6 col-lg-4">
+    <div class="card card-register border-0 mt-5 shadow-sm bg-light">
+      <div class="card-header border-0">
+        <span class="card-title">Register</span>
+      </div>
+      <div class="card-body">
+        <form action="/register" method="POST" class="needs-validation" novalidate>
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Username" name="username" autofocus required />
+            <label for="floatingInput">Username</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" required />
+            <label for="floatingPassword">Password</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="floatingEmail" placeholder="Email" name="email" required />
+            <label for="floatingEmail">Email</label>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-dark btn-sm">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="text-end text-indigo">
+      <a class="btn btn-link text-reset text-decoration-none" href="https://unsplash.com/photos/lEOogB2xh1M"><small>Photo Credits to Unsplash</small></a>
+    </div>
+  </div>
+</div>

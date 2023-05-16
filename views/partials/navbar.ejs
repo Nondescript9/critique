@@ -1,0 +1,30 @@
+<header>
+  <nav class="navbar navbar-light fixed-top navbar-expand-lg shadow-md">
+    <div class="container-fluid">
+      <!-- LOGO -->
+      <a class="navbar-brand px-2 fs-4" href="/albums">
+        <i class="bi bi-c-circle-fill navbar-logo"></i>
+        Critique
+      </a>
+      <!-- FLASH ALERT -->
+      <% if(success && success.length) { %>
+      <div class="alert alert-dismissible fade show mb-0 p-0" role="alert"><%= success %></div>
+      <% } %> <% if(error && error.length) { %>
+      <div class="alert alert-dismissible fade show mb-0 p-0" role="alert"><%= error %></div>
+      <% } %>
+      <!-- LOGIN/LOGOUT -->
+      <div>
+        <% if(!currentUser) { %>
+        <span class="navbar-text px-2 font-barlow">
+          <a class="text-reset text-decoration-none" href="/login">Login</a>
+        </span>
+        <% } else { %>
+        <span class="font-barlow fw-medium text-indigo"><%= currentUser.username %></span>
+        <span class="navbar-text px-2 font-barlow">
+          <a class="text-reset text-decoration-none" href="/logout">Logout</a>
+        </span>
+        <% } %>
+      </div>
+    </div>
+  </nav>
+</header>

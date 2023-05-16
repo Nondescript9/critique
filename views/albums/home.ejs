@@ -1,0 +1,28 @@
+<% layout('/layouts/boilerplate') %>
+
+<!-- SEARCH -->
+<div class="row justify-content-center">
+  <div class="col-4">
+    <form action="/albums/search" method="GET">
+      <div class="input-group input-group-sm input-group-underlined my-5">
+        <input type="text" class="form-control form-control-underlined font-barlow fw-light rounded-0" name="q" placeholder="Search Album" aria-label="Search Album" />
+        <button type="submit" class="btn btn-link btn-underlined rounded-0" id="button"><i class="bi bi-vinyl-fill" style="font-size: 1.2rem; color: #917898"></i></button>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- ALBUMS -->
+<div class="container mb-5">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-6 gx-4 gy-5">
+    <% if(albums.length) { %> <% for(let album of albums) { %>
+    <div class="col">
+      <div class="card card-animate border-0 text-center">
+        <a href="/albums/<%= album._id %>"><img class="card-img-0 w-75 mb-2 shadow-sm" src="<%= album.cover %>" alt="Album Cover" /></a>
+        <p class="card-title fw-medium"><%= album.name%></p>
+        <p class="card-subtitle fw-light mb-2"><%= album.artist %></p>
+        <p class="card-text font-barlow fs-sm"><%= album.label.toUpperCase() %></p>
+      </div>
+    </div>
+    <% } %> <% } %>
+  </div>
+</div>

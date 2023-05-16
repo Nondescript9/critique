@@ -1,0 +1,153 @@
+@import '../../node_modules/bootstrap/scss/bootstrap';
+
+// VARIABLES
+$color-primary-light: #bcb8ce;
+$color-primary: #917898;
+$color-primary-dark: #4c394f;
+$color-bg: #ffffff;
+$color-bg-light: #f8f9fa;
+
+// GLOBAL
+body {
+  font-family: 'Caveat', sans-serif;
+  background-color: $color-bg;
+}
+
+.font-barlow {
+  font-family: 'Barlow', sans-serif;
+}
+
+.fs-sm {
+  font-size: 0.8rem;
+}
+
+.fs-md {
+  font-size: 1.1rem;
+}
+
+.text-indigo {
+  color: $color-primary;
+}
+
+.form-control:focus {
+  background-color: white;
+  color: black;
+  border-color: $color-primary;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba($color-primary, 0.25);
+}
+
+.bi-caret-up-fill,
+.bi-caret-left-fill {
+  color: $color-primary;
+}
+
+// REGISTER
+.card-register {
+  background-image: linear-gradient(to right, rgba($color-primary-light, 0.7), rgba($color-primary-dark, 0.7)), url('../img/umberto-cofini-lEOogB2xh1M-unsplash.jpg');
+  background-size: cover;
+  background-position: top;
+}
+
+// NAVBAR
+.navbar-logo {
+  font-size: 1.5rem;
+  color: $color-primary;
+}
+
+.navbar-brand {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 400;
+}
+
+.navbar-text {
+  font-size: 1rem;
+  color: black;
+  transition: all 0.3s;
+}
+
+.navbar-text:hover {
+  color: $color-primary-dark;
+}
+
+.navbar-bg-light {
+  background-color: $color-bg-light;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+// INDEX PAGE
+.form-control-underlined {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: transparent;
+  transition: all 0.5s;
+}
+
+.form-control-underlined:hover {
+  border-color: $color-primary;
+  box-shadow: none;
+}
+
+.form-control-underlined:focus {
+  border-color: $color-primary;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.btn-underlined {
+  border-bottom-color: #ced4da;
+  transition: all 0.5s;
+}
+
+.btn-underlined:hover {
+  border-bottom-color: #ced4da;
+}
+
+.card {
+  background-color: $color-bg;
+}
+
+.card-animate {
+  transition: all 0.3s;
+}
+
+.card-animate:hover {
+  transform: translateY(-0.5rem);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+// VIEW PAGE
+.spotify-logo {
+  height: 2rem;
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: $color-primary;
+}
+
+.form-range:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba($color-primary, 0.25);
+}
+.form-range:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 1px #fff, 0 0 0 0.25rem rgba($color-primary, 0.25);
+}
+
+.form-range::-webkit-slider-thumb:active {
+  background-color: $color-primary-light;
+}
+
+.vr {
+  width: 0.7px;
+}
+
+// FOOTER
+.footer-logo {
+  font-size: 1.7rem;
+  color: $color-primary;
+}
