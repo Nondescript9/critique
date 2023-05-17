@@ -30,7 +30,6 @@ module.exports.getAccessToken = async (req, res, next) => {
 
 // Middleware that checks if the user is logged in
 module.exports.isLoggedIn = (req, res, next) => {
-  console.log(`currentUser: ${req.user}`);
   if (!req.isAuthenticated()) {
     req.session.returnTo = req.originalUrl;
     req.flash('error', 'You must be logged in');
