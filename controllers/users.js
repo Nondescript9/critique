@@ -12,7 +12,7 @@ module.exports.saveUser = async (req, res) => {
     req.login(registeredUser, (err) => {
       if (err) return next(err);
       req.flash('success', 'Welcome to Critique');
-      res.redirect('/albums');
+      return res.redirect('/albums');
     });
   } catch (e) {
     req.flash('error', e.message);

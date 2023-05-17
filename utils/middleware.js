@@ -21,7 +21,7 @@ module.exports.getAccessToken = async (req, res, next) => {
     req.session.token = token.data.access_token;
     req.session.cookie.maxAge = 3600000;
     console.log('Token Refreshed: ' + req.session.cookie.maxAge);
-    next();
+    return next();
   } else {
     console.log('Token Active: ' + req.session.cookie.maxAge);
     next();
@@ -63,9 +63,9 @@ module.exports.isReviewAuthor = async (req, res, next) => {
   const { id, r_id } = req.params;
   const review = await Review.findById(r_id);
   if (review.author.equals(req.user._id) || req.user.username === 'admin') {
-    next();
+    return next();
   } else {
     req.flash('error', 'You have no permission to do so');
-    return res.redirect(`/albums/${id}`);
+    res.redirect(`/albums/${id}`);
   }
 };

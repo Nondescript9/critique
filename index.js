@@ -81,7 +81,7 @@ app.use(
       // secure: true
     },
     store: MongoStore.create({
-      mongoUrl: 'mongodb://localhost:27017/critiquedb',
+      mongoUrl: cloudMongoDB,
       touchAfter: 3600,
       crypto: {
         secret

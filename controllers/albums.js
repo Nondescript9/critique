@@ -10,7 +10,7 @@ module.exports.getAlbumsFromAPI = async (req, res) => {
     };
     const response = await axios.get(`https://api.spotify.com/v1/search?q=${q}&type=album&limit=11`, reqConfig);
     const { items } = response.data.albums;
-    res.render('albums/search', { items });
+    return res.render('albums/search', { items });
   } else {
     req.flash('error', 'Nothing found if nothing searched');
     res.redirect('/albums');
