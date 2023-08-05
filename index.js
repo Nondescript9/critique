@@ -99,7 +99,7 @@ app.use(
       directives: {
         'default-src': [],
         'img-src': ["'self'", 'https://i.scdn.co'],
-        'frame-src': ['https://open.spotify.com'],
+        'frame-src': ['https://*.spotify.com'],
         'script-src': ["'unsafe-inline'", "'self'", 'https://cdn.jsdelivr.net', 'https://ajax.googleapis.com']
       }
     }
